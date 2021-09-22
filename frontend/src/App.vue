@@ -4,16 +4,19 @@
     <router-view>
       
     </router-view>
+    <Footer id="footer"/>
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import Footer from "./components/Footer.vue";
 import axios from "axios";
 export default {
   name: "App",
   components: {
     NavBar,
+    Footer
   },
   data() {
     return {
@@ -37,5 +40,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
 }
 </style>

@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .header{
-    background-color:beige;
+    background-color:rgb(245, 245, 212);
 }
 li {
   list-style: none;
@@ -39,6 +39,6 @@ li:hover{
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
-  color:rgb(92, 88, 88);
+  color:#a59a8d;
 }
 </style>

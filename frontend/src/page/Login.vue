@@ -1,6 +1,6 @@
 <template>
     <div id="login">
-        <h1>Login</h1>
+        <h1 class="mt-5">Login</h1>
     </div>
 
 </template>
