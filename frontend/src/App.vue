@@ -1,33 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <button @click="test()">TEST</button>
-    {{value}}
+    <NavBar />
+    <router-view>
+      
+    </router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios';
+import NavBar from "./components/NavBar.vue";
+import axios from "axios";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    NavBar,
   },
-  data(){
-    return{
-      value:'rien'
+  data() {
+    return {
+      value: "rien",
     };
   },
-  methods:{
-    async test(){
-      const response = await axios.get('/api/test');
-      console.log(response.data)
-      this.value = response.data.message
-    }
-  }
-}
+  methods: {
+    async test() {
+      const response = await axios.get("/api/test");
+      console.log(response.data);
+      this.value = response.data.message;
+    },
+  },
+};
 </script>
 
 <style>
@@ -37,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
