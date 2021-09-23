@@ -36,6 +36,6 @@ li:hover {
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
-  color: #a59a8d;
+  color: #363535;
 }
 </style>
