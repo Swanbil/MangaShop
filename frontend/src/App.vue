@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <NavBar />
-    <router-view>
-      
+    <NavBar :isLog="isLog" @clicked="onChangeLog" :isAdmin="isAdmin" @changeAdmin="onChangeAdmin"/>
+    <router-view 
+      :isLog="isLog"
+      :isAdmin="isAdmin"
+      @clicked="onChangeLog"
+      @changeAdmin="onChangeAdmin">
     </router-view>
     <Footer id="footer"/>
   </div>
@@ -11,7 +14,6 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
-import axios from "axios";
 export default {
   name: "App",
   components: {
@@ -20,14 +22,16 @@ export default {
   },
   data() {
     return {
-      value: "rien",
-    };
+      isLog:false,
+      isAdmin:false
+    }
   },
   methods: {
-    async test() {
-      const response = await axios.get("/api/test");
-      console.log(response.data);
-      this.value = response.data.message;
+    onChangeLog(value) {
+      this.isLog = value;
+    },
+    onChangeAdmin(value) {
+      this.isAdmin = value;
     },
   },
 };

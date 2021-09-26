@@ -1,14 +1,19 @@
 <template>
   <div class="header p-1">
     <ul class="d-flex flex-row p-1 align-items-center">
-      <router-link class="link" to="/"><li>Home</li></router-link>
-      <router-link class="link" to="/login"><li>Product</li></router-link>
-      <li class="ms-auto p-2">
-        <router-link class="link" to="/login">
+      <router-link class="link" to="/"><li class="item">Home</li></router-link>
+      <router-link class="link" to="/login"><li class="item">Product</li></router-link>
+      <li v-if="!isLog" class="item ms-auto p-2">
+        <router-link  class="link" to="/login">
           <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           Login
         </router-link>
+        
       </li>
+      <li v-else class="item-btn ms-auto p-1">
+        <b-button class="btn m-3 text-light "  @click="logout()">Logout</b-button>
+      </li>
+
     </ul>
   </div>
 </template>
@@ -16,6 +21,17 @@
 <script>
 export default {
   name: "NavBar",
+  props:{
+    isLog: Boolean,
+    isAdmin: Boolean
+  },
+  methods:{
+    async logout(){
+      this.$emit('clicked', false);
+      this.$emit('changeAdmin', false);
+      localStorage.removeItem('token');
+    }
+  }
 };
 </script>
 
@@ -23,19 +39,30 @@ export default {
 .header {
   background-color: rgb(250, 250, 229);
 }
-li {
+.item{
   list-style: none;
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
 }
-li:hover {
+.item:hover {
   background-color: rgb(235, 235, 235);
+}
+.item-btn{
+  list-style: none;
 }
 .link {
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
   color: #363535;
+}
+.btn{
+    width:90%;
+    font-weight: bold;
+    background-color: rgb(226, 58, 46);
+}
+.btn:hover{
+    background-color: rgb(245, 117, 108);
 }
 </style>
