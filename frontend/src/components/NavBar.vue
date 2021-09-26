@@ -1,6 +1,10 @@
 <template>
   <div class="header p-1">
     <ul class="d-flex flex-row p-1 align-items-center">
+      <li class="logo">
+        <b-icon icon="book-half" aria-hidden="true"></b-icon>
+        MangaSHOP
+      </li>
       <router-link class="link" to="/"><li class="item">Home</li></router-link>
       <router-link class="link" to="/login"><li class="item">Product</li></router-link>
       <li v-if="!isLog" class="item ms-auto p-2">
@@ -8,7 +12,6 @@
           <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           Login
         </router-link>
-        
       </li>
       <li v-else class="item-btn ms-auto p-1">
         <b-button class="btn m-2 text-light "  @click="logout()">
@@ -41,6 +44,13 @@ export default {
 <style scoped>
 .header {
   background-color: rgb(41, 39, 39);
+}
+.logo{
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    color:rgb(255, 255, 255);
 }
 .item{
   list-style: none;

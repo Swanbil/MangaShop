@@ -68,7 +68,7 @@ export default {
     flex-direction: column;
     padding:15px;
     justify-content: center;
-    border: 10px solid rgb(41, 39, 39);
+    border: 10px solid rgb(63, 63, 63);
     border-radius:2%;
     background-color: rgb(250, 250, 250);
     box-shadow: 10px 5px 5px rgb(163, 161, 161);
