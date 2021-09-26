@@ -7,13 +7,13 @@
         <div class="form ">
             <b-form-input class="m-3" type="text" v-model="user.username" placeholder="Username" required></b-form-input>
             <b-form-input class="m-3" type="password" v-model="user.password" placeholder="Password" required></b-form-input>
-            <b-button class="btn m-3 text-dark" @click="login()">Login</b-button>
+            <b-button class="btn m-3 text-light" @click="login()">Login</b-button>
         </div>
         <div id="register">
             You don't have an account, sign in
             <router-link class="link" to="/register">here</router-link>
         </div>
-        <div id="response">
+        <div id="response mb-5">
             {{response}}
         </div>
     </div>
@@ -68,9 +68,10 @@ export default {
     flex-direction: column;
     padding:15px;
     justify-content: center;
-    border: 10px solid #c1b3a3;
+    border: 10px solid rgb(41, 39, 39);
     border-radius:2%;
     background-color: rgb(250, 250, 250);
+    box-shadow: 10px 5px 5px rgb(163, 161, 161);
     
 }
 .form{
@@ -78,10 +79,16 @@ export default {
 }
 .btn{
     width:100%;
-    background-color: rgb(250, 250, 229);
+    background-color: #277ac7;
     font-weight: bold;
 }
 .btn:hover{
-    background-color: rgb(199, 199, 184);
+    background-color: #519ee6;
+}
+.title{
+    color:#277ac7;
+}
+#register{
+    margin-bottom:5%;
 }
 </style>

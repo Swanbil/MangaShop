@@ -8,7 +8,7 @@
             <b-form-input class="m-3" type="text" v-model="newUser.username" placeholder="Username" required></b-form-input>
             <b-form-input class="m-3" type="password" v-model="newUser.password" placeholder="Password" required></b-form-input>
             <b-form-input class="m-3" type="password" v-model="checkPassword" placeholder="Confirm password" required></b-form-input>
-            <b-button class="btn m-3 text-dark" @click="register()">Register</b-button>
+            <b-button class="btn m-3 text-light" @click="register()">Register</b-button>
         </div>
         <div v-if="response.isOk & response.text !=''" class="response bg-success text-light">
             <h6>{{response.text}}</h6>
@@ -69,9 +69,10 @@ export default{
     flex-direction: column;
     padding:15px;
     justify-content: center;
-    border: 10px solid #c1b3a3;
+    border: 10px solid rgb(41, 39, 39);
     border-radius:2%;
     background-color: rgb(250, 250, 250);
+    box-shadow: 10px 5px 5px rgb(163, 161, 161);
     
 }
 .form{
@@ -79,13 +80,16 @@ export default{
 }
 .btn{
     width:100%;
-    background-color: rgb(250, 250, 229);
+    background-color: #277ac7;
     font-weight: bold;
 }
 .btn:hover{
-    background-color: rgb(199, 199, 184);
+    background-color: #519ee6;
 }
 .response{
     margin:5% 15% 5% 15%;
+}
+.title{
+    color:#277ac7;
 }
 </style>

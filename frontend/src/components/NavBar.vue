@@ -11,7 +11,10 @@
         
       </li>
       <li v-else class="item-btn ms-auto p-1">
-        <b-button class="btn m-3 text-light "  @click="logout()">Logout</b-button>
+        <b-button class="btn m-2 text-light "  @click="logout()">
+          <b-icon icon="person-circle" aria-hidden="true"></b-icon>
+          Logout
+          </b-button>
       </li>
 
     </ul>
@@ -37,7 +40,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: rgb(250, 250, 229);
+  background-color: rgb(41, 39, 39);
 }
 .item{
   list-style: none;
@@ -46,7 +49,7 @@ export default {
   padding: 10px;
 }
 .item:hover {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(59, 58, 58);
 }
 .item-btn{
   list-style: none;
@@ -55,7 +58,7 @@ export default {
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
-  color: #363535;
+  color: #277ac7;
 }
 .btn{
     width:90%;
@@ -63,6 +66,6 @@ export default {
     background-color: rgb(226, 58, 46);
 }
 .btn:hover{
-    background-color: rgb(245, 117, 108);
+    background-color: rgb(236, 94, 75);
 }
 </style>

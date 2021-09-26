@@ -14,7 +14,7 @@ export default {
 <style scoped>
 .footer{
     height:50px;
-    background-color:#c1b3a3;
+    background-color:rgb(41, 39, 39);;
     padding:9px;
     font-weight:bold;
     
