@@ -5,9 +5,11 @@
       :isLog="isLog"
       :isAdmin="isAdmin"
       @clicked="onChangeLog"
-      @changeAdmin="onChangeAdmin">
+      @changeAdmin="onChangeAdmin"
+      class="pb-5">
     </router-view>
     <Footer id="footer"/>
+    
   </div>
 </template>
 
@@ -44,11 +46,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  min-height: 100vh;
+
   
 }
 #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%; 
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
+
 </style>

@@ -17,6 +17,5 @@ export default {
     background-color:rgb(41, 39, 39);;
     padding:9px;
     font-weight:bold;
-    
 }
 </style>

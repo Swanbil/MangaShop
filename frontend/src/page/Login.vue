@@ -13,11 +13,14 @@
             You don't have an account, sign in
             <router-link class="link" to="/register">here</router-link>
         </div>
-        <div id="response mb-5">
-            {{response}}
+        <div v-if="response.isOk & response.text !=''" class="response bg-success text-light">
+            <h6>{{response.text}}</h6>
         </div>
+        <div v-if="!response.isOk & response.text !=''" class="response bg-danger text-light">
+            <h6>{{response.text}}</h6> 
+        </div>     
     </div>
-</template>
+</template> 
 
 <script>
 import axios from 'axios';
@@ -34,7 +37,10 @@ export default {
                username:'',
                password:''
            },
-           response:'',
+           response: {
+            isOk: false,
+            text: "",
+          }
        }
    },
    methods:{
@@ -44,7 +50,8 @@ export default {
                 const token = response.data.token
                 localStorage.setItem('token',token)
                 const decodeToken = jwt.decode(token)
-                this.response = response.data.message;
+                this.response.text = response.data.message;
+                this.response.isOk = true;
                 const isLog = decodeToken.log;
                 const isAdmin = decodeToken.admin;
                 console.log(decodeToken);
@@ -52,8 +59,9 @@ export default {
                 this.$emit('changeAdmin', isAdmin);
                 this.$router.push({name:'Home'})
            }
-           catch(e){
-               console.log(e);
+           catch(error){
+                this.response.isOk = false;
+                this.response.text = error.response.data.message;
            }
            
        }
@@ -68,10 +76,9 @@ export default {
     flex-direction: column;
     padding:15px;
     justify-content: center;
-    border: 10px solid rgb(63, 63, 63);
     border-radius:2%;
     background-color: rgb(250, 250, 250);
-    box-shadow: 10px 5px 5px rgb(163, 161, 161);
+    box-shadow: 10px 5px 5px 5px rgb(163, 161, 161);
     
 }
 .form{

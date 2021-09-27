@@ -6,20 +6,29 @@
         MangaSHOP
       </li>
       <router-link class="link" to="/"><li class="item">Home</li></router-link>
-      <router-link class="link" to="/login"><li class="item">Product</li></router-link>
+      <router-link class="link" to="/product"><li class="item">Product</li></router-link>
       <li v-if="!isLog" class="item ms-auto p-2">
         <router-link  class="link" to="/login">
           <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           Login
         </router-link>
       </li>
-      <li v-else class="item-btn ms-auto p-1">
-        <b-button class="btn m-2 text-light "  @click="logout()">
-          <b-icon icon="person-circle" aria-hidden="true"></b-icon>
-          Logout
+      <div v-else class="item-btn ms-auto ">
+        <li>
+          <router-link class="link" to="/cart">
+          <li class="cart text-success d-flex flex-direction_row">
+            <b-icon icon="cart4" aria-hidden="true"></b-icon>
+            <div>Cart</div>
+          </li>
+          </router-link>
+        </li>
+        <li>
+          <b-button class="btn-log text-light d-flex flex-direction-row p-1"  @click="logout()">
+            <b-icon icon="box-arrow-right" aria-hidden="true"></b-icon>
+            <div>Logout</div>
           </b-button>
-      </li>
-
+        </li>
+      </div>
     </ul>
   </div>
 </template>
@@ -52,6 +61,9 @@ export default {
     padding: 10px;
     color:rgb(255, 255, 255);
 }
+.cart{
+  padding-right: 30px;
+}
 .item{
   list-style: none;
   font-size: 20px;
@@ -63,6 +75,9 @@ export default {
 }
 .item-btn{
   list-style: none;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
 }
 .link {
   text-decoration: none;
@@ -70,12 +85,13 @@ export default {
   font-weight: bold;
   color: #277ac7;
 }
-.btn{
-    width:90%;
+.btn-log{
+    padding:5%;
     font-weight: bold;
     background-color: rgb(226, 58, 46);
 }
-.btn:hover{
+.btn-log:hover{
     background-color: rgb(236, 94, 75);
 }
+
 </style>
