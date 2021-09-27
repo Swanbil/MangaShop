@@ -10,7 +10,7 @@
     >
       <b-card-title class="d-flex align-items-center">
         <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
-        <b-button class="btn" variant="success">+</b-button>
+        <b-button class="btn" variant="success" @click="addToChart(item)">+</b-button>
       </b-card-title>
       <b-card-text>
         {{ item.description }}
@@ -25,10 +25,24 @@ export default {
   name: "Item",
   props: {
     item: Object,
+    isLog : Boolean
   },
   data() {
-    return {};
+    return {
+      ok:"ok"
+    }
   },
+  methods:{
+    addToChart(item){
+      if(this.isLog){
+        item['quantity'] = 1;
+        this.$emit('addItem',item);
+      }
+      else{
+        alert("Please connect to your account to add mangas on your chart");
+      }
+    }
+  }
 };
 </script>
 

@@ -4,8 +4,10 @@
     <router-view 
       :isLog="isLog"
       :isAdmin="isAdmin"
+      :cart="cart"
       @clicked="onChangeLog"
       @changeAdmin="onChangeAdmin"
+      @changeCart="onChangeCart"
       class="content ">
     </router-view>
     <Footer id="footer"/>
@@ -25,7 +27,8 @@ export default {
   data() {
     return {
       isLog:false,
-      isAdmin:false
+      isAdmin:false,
+      cart:[]
     }
   },
   methods: {
@@ -35,6 +38,9 @@ export default {
     onChangeAdmin(value) {
       this.isAdmin = value;
     },
+    onChangeCart(value){
+      this.cart = value;
+    }
   },
 };
 </script>
