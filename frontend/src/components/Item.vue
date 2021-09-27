@@ -1,22 +1,21 @@
 <template>
   <div class="item">
-      
     <b-card
-      img-src="https://media.melty.fr/article-4489355-ratio15_720-f6/media.jpg"
+      :img-src="item.img"
       img-alt="Image"
       img-top
       tag="article"
       style="max-width: 20rem"
-      class="mb-2"
+      class="card mb-2"
     >
-        <b-card-title class="d-flex align-items-center">
-            <div>Card title</div>
-            <b-button class="btn" variant="success">+</b-button>
-        </b-card-title>
-        <b-card-text>
-            Some quick example text to build on the card title and make up the bulk
-            of the card's content.
-        </b-card-text>
+      <b-card-title class="d-flex align-items-center">
+        <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
+        <b-button class="btn" variant="success">+</b-button>
+      </b-card-title>
+      <b-card-text>
+        {{ item.description }}
+      </b-card-text>
+      <b-card-footer>{{ item.price }}$</b-card-footer>
     </b-card>
   </div>
 </template>
@@ -24,6 +23,9 @@
 <script>
 export default {
   name: "Item",
+  props: {
+    item: Object,
+  },
   data() {
     return {};
   },
@@ -31,7 +33,16 @@ export default {
 </script>
 
 <style scoped>
-.btn{
-    margin-left:auto;
+.btn {
+  margin-left: auto;
 }
+.link{
+  text-decoration: none;
+  color:#424242;
+  font-weight:bold;
+}
+.link:hover{
+  color:#686868;;
+}
+
 </style>

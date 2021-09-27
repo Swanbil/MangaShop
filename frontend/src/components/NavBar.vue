@@ -24,7 +24,7 @@
         </li>
         <li>
           <b-button class="btn-log text-light d-flex flex-direction-row p-1"  @click="logout()">
-            <b-icon icon="box-arrow-right" aria-hidden="true"></b-icon>
+            <b-icon icon="power" aria-hidden="true"></b-icon>
             <div>Logout</div>
           </b-button>
         </li>

@@ -6,13 +6,13 @@
       :isAdmin="isAdmin"
       @clicked="onChangeLog"
       @changeAdmin="onChangeAdmin"
-      class="pb-5">
+      class="content ">
     </router-view>
     <Footer id="footer"/>
     
   </div>
 </template>
-
+ 
 <script>
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
@@ -55,6 +55,9 @@ export default {
   position:absolute;
   bottom:0;
   width:100%;
+}
+.content{
+  padding-bottom:120px;
 }
 
 </style>
