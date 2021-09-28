@@ -22,7 +22,7 @@
           <tr class="bg-dark text-light">
             <th scope="row">TOTAL</th>
             <td></td>
-            <td>{{total}}$</td>
+            <td>{{ total }}$</td>
             <td></td>
           </tr>
         </tbody>
@@ -32,44 +32,46 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Cart",
   props: {
     isLog: Boolean,
     cart: Array,
   },
-  data(){
-      return{
-          total:0
-      }
-
+  data() {
+    return {
+      total: 0,
+    };
   },
   methods: {
     //methods to add an other item or remove item
-     setTotalCart(){
-        
-        var total = 0;
-        this.cart.forEach(article => {
-            total +=article.price * article.quantity;
-        });
-        this.total = total;
-        }
+    setTotalCart() {
+      var total = 0;
+      this.cart.forEach((article) => {
+        total += article.price * article.quantity;
+      });
+      this.total = total;
+    },
+    async getCart(){
+      const response = await axios.get('/api/cart');
+      const cart = response.data;
+      this.$emit('changeCart', cart);
+    }
   },
-  mounted(){
-      this.setTotalCart();
-  }
-  
+  async mounted() {
+    await this.getCart();
+    this.setTotalCart();
+  },
 };
 </script>
 
 <style scoped>
-.table{
-    margin:auto;
-    width:80%;
-    
+.table {
+  margin: auto;
+  width: 80%;
 }
-.tab-header{
-    color:#277ac7;
+.tab-header {
+  color: #277ac7;
 }
-
 </style>

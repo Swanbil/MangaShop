@@ -43,8 +43,7 @@ export default {
       this.cart = value;
     }
   },
-  created(){
-    console.log("ok")
+  async created(){
     const token = localStorage.getItem('token');
     const decodeToken = jwt.decode(token);
     if(decodeToken.log == true){
@@ -55,7 +54,8 @@ export default {
       this.isLog = false;
       this.isAdmin = false;
     }
-  }
+  },
+  
 };
 </script>
 

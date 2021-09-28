@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Item",
   props: {
@@ -33,7 +34,7 @@ export default {
     }
   },
   methods:{
-    addToCart(item){
+    async addToCart(item){
       if(this.isLog){
         item['quantity'] = 1;
         this.$emit('addItem',item);

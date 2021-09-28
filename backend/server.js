@@ -19,6 +19,8 @@ const client = new Client({
   })
 client.connect();
 
+const cart = [];        //cart backend side
+
 app.get('/api/test', (req, res) => {
     res.json({message: 'MangaShop'});
 });
@@ -79,6 +81,23 @@ app.post('/api/register', async(req,res) => {
         values:[newUser.username,passwordHash,false]
     })
     res.json({message: 'Welcome'});
+})
+
+app.get('/api/cart', (req,res) =>{
+    res.json(cart);
+})
+
+app.post('/api/cart/addItem', (req,res) => {
+    const item = req.body.item;
+    const id = cart.findIndex(i => i.id === item.id);
+      if(id == -1){
+        cart.push(item);
+      }
+      else{
+        cart[id].quantity +=1;
+    }
+    res.json({message:"Item added to the cart"});
+
 })
 
 const port = process.env.PORT || 3080;
