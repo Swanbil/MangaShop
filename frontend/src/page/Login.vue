@@ -47,9 +47,9 @@ export default {
        async login(){
            try{
                 const response = await axios.post('/api/login',{user:this.user});
-                const token = response.data.token
-                localStorage.setItem('token',token)
-                const decodeToken = jwt.decode(token)
+                const token = response.data.token;
+                localStorage.setItem('token',token);
+                const decodeToken = jwt.decode(token);
                 this.response.text = response.data.message;
                 this.response.isOk = true;
                 const isLog = decodeToken.log;
@@ -57,7 +57,7 @@ export default {
                 console.log(decodeToken);
                 this.$emit('clicked', isLog);
                 this.$emit('changeAdmin', isAdmin);
-                this.$router.push({name:'Home'})
+                this.$router.push({name:'Home'});
            }
            catch(error){
                 this.response.isOk = false;

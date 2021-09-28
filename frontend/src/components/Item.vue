@@ -10,7 +10,7 @@
     >
       <b-card-title class="d-flex align-items-center">
         <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
-        <b-button class="btn" variant="success" @click="addToChart(item)">+</b-button>
+        <b-button class="btn" variant="success" @click="addToCart(item)">+</b-button>
       </b-card-title>
       <b-card-text>
         {{ item.description }}
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods:{
-    addToChart(item){
+    addToCart(item){
       if(this.isLog){
         item['quantity'] = 1;
         this.$emit('addItem',item);

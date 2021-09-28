@@ -18,6 +18,7 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
+const jwt = require('jsonwebtoken');
 export default {
   name: "App",
   components: {
@@ -42,6 +43,19 @@ export default {
       this.cart = value;
     }
   },
+  created(){
+    console.log("ok")
+    const token = localStorage.getItem('token');
+    const decodeToken = jwt.decode(token);
+    if(decodeToken.log == true){
+      this.isLog = true;
+      this.isAdmin = decodeToken.admin;
+    }
+    else{
+      this.isLog = false;
+      this.isAdmin = false;
+    }
+  }
 };
 </script>
 

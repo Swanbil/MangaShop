@@ -45,6 +45,7 @@ export default {
       this.$emit('clicked', false);
       this.$emit('changeAdmin', false);
       localStorage.removeItem('token');
+      this.$router.push({name:'Home'});
     }
   }
 };

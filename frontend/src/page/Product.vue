@@ -50,7 +50,8 @@ export default {
       console.log("cart = ", this.localCart);
       this.$emit('changeCart',this.localCart);
     }
-  }
+  },
+
 };
 </script>
 
