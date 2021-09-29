@@ -54,7 +54,6 @@ export default {
                 this.response.isOk = true;
                 const isLog = decodeToken.log;
                 const isAdmin = decodeToken.admin;
-                console.log(decodeToken);
                 this.$emit('clicked', isLog);
                 this.$emit('changeAdmin', isAdmin);
                 this.$router.push({name:'Home'});

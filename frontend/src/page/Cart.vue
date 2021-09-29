@@ -16,7 +16,11 @@
             <th scope="row">{{ article.id }}</th>
             <td>{{ article.title }}</td>
             <td>{{ article.price }}$</td>
-            <td>{{ article.quantity }}</td>
+            <td>
+              <b-button class="btn bg-success" @click="increaseQuantity(article.id)">+</b-button>
+              {{ article.quantity }}
+              <b-button class="btn bg-danger" @click="decreaseQuantity(article.id)">-</b-button>
+              </td>
             <!-- button +/- to increment or decrement quantity -->
           </tr>
           <tr class="bg-dark text-light">
@@ -42,6 +46,7 @@ export default {
   data() {
     return {
       total: 0,
+      localCart:this.cart
     };
   },
   methods: {
@@ -57,6 +62,28 @@ export default {
       const response = await axios.get('/api/cart');
       const cart = response.data;
       this.$emit('changeCart', cart);
+    },
+    async increaseQuantity(idArticle){
+      const id = this.cart.findIndex(i => i.id === idArticle);
+      const item = this.cart[id];
+      try {
+        await axios.post("/api/cart/addItem", { item: item });
+      } catch (e) {
+        console.warn(e);
+      }
+      await this.getCart();
+      this.setTotalCart();
+    },
+    async decreaseQuantity(idArticle){
+      const id = this.cart.findIndex(i => i.id === idArticle);
+      const item = this.cart[id];
+      try {
+        await axios.put("/api/cart/deleteItem", { item: item });
+      } catch (e) {
+        console.warn(e);
+      }
+      await this.getCart();
+      this.setTotalCart();
     }
   },
   async mounted() {
@@ -73,5 +100,8 @@ export default {
 }
 .tab-header {
   color: #277ac7;
+}
+.btn{
+  padding:0 7px 0 7px;
 }
 </style>

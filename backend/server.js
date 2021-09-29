@@ -19,7 +19,7 @@ const client = new Client({
   })
 client.connect();
 
-const cart = [];        //cart backend side
+var cart = [];        //cart backend side
 
 app.get('/api/test', (req, res) => {
     res.json({message: 'MangaShop'});
@@ -98,6 +98,18 @@ app.post('/api/cart/addItem', (req,res) => {
     }
     res.json({message:"Item added to the cart"});
 
+})
+
+app.put('/api/cart/deleteItem', (req,res) => {
+    const item = req.body.item;
+    const id = cart.findIndex(i => i.id === item.id);
+      if(cart[id].quantity == 1){
+        cart.splice(id,1);
+      }
+      else{
+        cart[id].quantity -=1;
+    }
+    res.json({message:"Item deleted from the cart"});
 })
 
 const port = process.env.PORT || 3080;

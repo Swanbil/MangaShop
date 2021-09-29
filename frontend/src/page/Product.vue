@@ -47,8 +47,7 @@ export default {
 
     async onAddToChart(item) {
       try {
-        const response = await axios.post("/api/cart/addItem", { item: item });
-        console.log(response.data.message);
+        await axios.post("/api/cart/addItem", { item: item });
       } catch (e) {
         console.warn(e);
       }
