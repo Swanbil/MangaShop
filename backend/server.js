@@ -14,7 +14,7 @@ const { Client } = require('pg')
 const client = new Client({
     user: 'postgres',
     host: 'localhost',
-    password: 'vote',
+    password: 'sacha',
     database: 'MangaShop'
   })
 client.connect();
@@ -79,6 +79,24 @@ app.post('/api/register', async(req,res) => {
         values:[newUser.username,passwordHash,false]
     })
     res.json({message: 'Welcome'});
+})
+
+//Display all manga on product page
+app.get('/api/affManga', async(req, res) => {
+    const aff=await client.query({
+        text: 'SELECT *  FROM mangainformation',
+    });
+    res.json(aff.rows)
+})
+app.post('/api/affSingleManga', async (req, res)=>{
+    const idManga= req.body.idmanga
+    console.log(idManga)
+    const aff = await client.query({
+        text : 'SELECT * FROM mangainformation where idmanga = $1',
+        values : [idManga]
+    })
+    const manga = aff.rows[0]
+    res.json(manga)
 })
 
 const port = process.env.PORT || 3080;

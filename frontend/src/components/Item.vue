@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <b-card
-      :img-src="item.img"
+      :img-src="item.image"
       img-alt="Image"
       img-top
       tag="article"
@@ -9,12 +9,9 @@
       class="card mb-2"
     >
       <b-card-title class="d-flex align-items-center">
-        <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
+        <router-link :to="{ name: 'SingleItem', params: { id: item.idmanga }}" class="link"><div>{{ item.title }}</div><div class = "numVol">Tome : {{ item.numVol }}</div></router-link>
         <b-button class="btn" variant="success" @click="addToCart(item)">+</b-button>
       </b-card-title>
-      <b-card-text>
-        {{ item.description }}
-      </b-card-text>
       <b-card-footer>{{ item.price }}$</b-card-footer>
     </b-card>
   </div>
@@ -56,7 +53,10 @@ export default {
   font-weight:bold;
 }
 .link:hover{
-  color:#686868;;
+  color:#686868;
+}
+.numVol{
+  float : left;
 }
 
 </style>
