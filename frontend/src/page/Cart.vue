@@ -96,7 +96,8 @@ export default {
 <style scoped>
 .table {
   margin: auto;
-  width: 80%;
+  margin-top:3%;
+  width: 60%;
 }
 .tab-header {
   color: #277ac7;

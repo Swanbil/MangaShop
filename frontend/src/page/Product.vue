@@ -9,8 +9,12 @@
           :isLog="isLog"
           @addItem="onAddToChart"
         />
-        <Item class="item col-4" :item="item" />
-        <Item class="item col-4" :item="item" />
+        <Item class="item col-4" 
+          :item="item2"
+          :isLog="isLog"
+          @addItem="onAddToChart"
+        />
+        <Item class="item col-4" :item="item2" />
         <Item class="item col-4" :item="item" />
         <Item class="item col-4" :item="item" />
       </div>
@@ -40,6 +44,14 @@ export default {
         description:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
+       item2: {
+        id: 1,
+        img: "https://media.melty.fr/article-4489355-ratio15_720-f6/media.jpg",
+        title: "Manga 2",
+        price: 100,
+        description:
+          "Some quick example text to build on the card title and make up the bulk of the card's content.",
+      },
     };
   },
   methods: {
@@ -60,4 +72,5 @@ export default {
 .item {
   padding: 10px;
 }
+
 </style>

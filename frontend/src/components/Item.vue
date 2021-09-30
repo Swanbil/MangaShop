@@ -8,7 +8,7 @@
       style="max-width: 20rem"
       class="card mb-2"
     >
-      <b-card-title class="d-flex align-items-center">
+      <b-card-title class="title d-flex align-items-center">
         <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
         <b-button class="btn" variant="success" @click="addToCart(item)">+</b-button>
       </b-card-title>
@@ -58,6 +58,14 @@ export default {
 }
 .link:hover{
   color:#686868;;
+}
+@media screen and (max-width: 640px) {
+  .title {
+    flex-direction: column;
+  }
+  .btn{
+    margin:auto;
+  }
 }
 
 </style>
