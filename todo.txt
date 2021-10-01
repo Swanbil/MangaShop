@@ -1,0 +1,2 @@
+- when add article to the cart, add a little red notif next to he icon cart
+- add command adress for the user

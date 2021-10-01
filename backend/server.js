@@ -84,7 +84,6 @@ app.post('/api/register', async(req,res) => {
 })
 
 app.get('/api/cart', (req,res) =>{
-    console.log(cart)
     res.json(cart);
 })
 

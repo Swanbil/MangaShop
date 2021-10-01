@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      ok:"ok"
+      test:null
     }
   },
   methods:{
@@ -33,7 +33,7 @@ export default {
       else{
         alert("Please connect to your account to add mangas on your chart");
       }
-    }
+    },
   }
 };
 </script>
