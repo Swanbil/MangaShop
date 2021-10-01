@@ -17,9 +17,9 @@
             <td>{{ article.title }}</td>
             <td>{{ article.price }}$</td>
             <td>
-              <b-button class="btn bg-success" @click="increaseQuantity(article.id)">+</b-button>
+              <b-button class="btn bg-success" @click="increaseQuantity(article.idManga)">+</b-button>
               {{ article.quantity }}
-              <b-button class="btn bg-danger" @click="decreaseQuantity(article.id)">-</b-button>
+              <b-button class="btn bg-danger" @click="decreaseQuantity(article.idManga)">-</b-button>
               </td>
           </tr>
           <tr class="bg-dark text-light">
@@ -63,7 +63,7 @@ export default {
       this.$emit('changeCart', cart);
     },
     async increaseQuantity(idArticle){
-      const id = this.cart.findIndex(i => i.id === idArticle);
+      const id = this.cart.findIndex(i => i.idManga === idArticle);
       const item = this.cart[id];
       try {
         await axios.post("/api/cart/addItem", { item: item });
@@ -74,7 +74,7 @@ export default {
       this.setTotalCart();
     },
     async decreaseQuantity(idArticle){
-      const id = this.cart.findIndex(i => i.id === idArticle);
+      const id = this.cart.findIndex(i => i.idManga === idArticle);
       const item = this.cart[id];
       try {
         await axios.put("/api/cart/deleteItem", { item: item });

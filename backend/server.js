@@ -84,12 +84,13 @@ app.post('/api/register', async(req,res) => {
 })
 
 app.get('/api/cart', (req,res) =>{
+    console.log(cart)
     res.json(cart);
 })
 
 app.post('/api/cart/addItem', (req,res) => {
     const item = req.body.item;
-    const id = cart.findIndex(i => i.id === item.id);
+    const id = cart.findIndex(i => i.idManga === item.idManga);
       if(id == -1){
         cart.push(item);
       }
@@ -102,7 +103,7 @@ app.post('/api/cart/addItem', (req,res) => {
 
 app.put('/api/cart/deleteItem', (req,res) => {
     const item = req.body.item;
-    const id = cart.findIndex(i => i.id === item.id);
+    const id = cart.findIndex(i => i.idManga === item.idManga);
       if(cart[id].quantity == 1){
         cart.splice(id,1);
       }
