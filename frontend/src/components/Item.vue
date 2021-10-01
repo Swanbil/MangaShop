@@ -1,20 +1,11 @@
 <template>
   <div class="item">
-    <b-card
-      :img-src="item.img"
-      img-alt="Image"
-      img-top
-      tag="article"
-      style="max-width: 20rem"
-      class="card mb-2"
-    >
-      <b-card-title class="title d-flex align-items-center">
-        <router-link :to="{ name: 'SingleItem', params: { id: item.id }}" class="link"><div>{{ item.title }}</div></router-link>
+    <b-card tag="article" class="card mb-2 ">
+      <img class="card-img-top" :src="item.image" alt="Card image cap"/>
+      <b-card-title class="title d-flex align-items-center mt-3">
+        <router-link :to="{ name: 'SingleItem', params: { id: item.idManga}}" class="link"><div>{{ item.title }}</div></router-link>
         <b-button class="btn" variant="success" @click="addToCart(item)">+</b-button>
       </b-card-title>
-      <b-card-text>
-        {{ item.description }}
-      </b-card-text>
       <b-card-footer>{{ item.price }}$</b-card-footer>
     </b-card>
   </div>
@@ -56,15 +47,19 @@ export default {
   color:#424242;
   font-weight:bold;
 }
+.card-img-top{
+    width:60%;
+}
 .link:hover{
   color:#686868;;
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 770px) {
   .title {
     flex-direction: column;
   }
   .btn{
     margin:auto;
+    padding:2px;
   }
 }
 

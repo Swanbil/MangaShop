@@ -1,61 +1,75 @@
 <template>
   <div class="single-item">
-    <h1 class="mt-5">Single item id : {{ id }}</h1>
-
-    <b-card tag="article" class="mb-2">
-      <img class="card-img-left" :src="item.img" alt="Card image cap" />
-      <b-card-body class="card-body-right">
-        <b-card-title  class="d-flex flex-direction-row">
-          <div>{{ item.title }}</div>
-          <b-button class="btn" variant="success">+</b-button>
-        </b-card-title>
-        <b-card-text >
-          {{ item.description }}
-        </b-card-text>
-        <b-card-footer>{{ item.price }}$</b-card-footer>
+    <b-card no-body class="overflow-hidden" style="max-width: 800px;">
+    <b-row no-gutters>
+      <b-col md="6">
+        <b-card-img :src="manga.image" alt="Image" class="img rounded-0"></b-card-img>
+      </b-col>
+      <b-col md="6">
+        <b-card-body class="card-body">
+          <b-card-title  class="d-flex flex-direction-row">
+            <div>{{ manga.title }}</div>
+            <b-button class="btn" variant="success"  @click="addToCart(manga)">+</b-button>
+          </b-card-title>
+          <b-card-text >
+            {{ manga.description }}
+          </b-card-text>
+          <b-card-footer >{{ manga.price }}$</b-card-footer>
       </b-card-body>
-    </b-card>
+      </b-col>
+    </b-row>
+  </b-card>
   </div>
 </template>
 
 <script>
-import Item from "./Item.vue";
+import axios from 'axios';
 export default {
   name: "SingleItem",
-  components: Item,
+  props:{
+    isLog : Boolean
+  },
   data() {
     return {
       id: this.$route.params.id,
-      item: {
-        id: 0,
-        img: "https://media.melty.fr/article-4489355-ratio15_720-f6/media.jpg",
-        title: "Manga's name",
-        price: 9,
-        description:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      },
+      manga:{}
     };
   },
   methods: {
-    //request bbd to load the item information with the id
+  //request bbd to load the item information with the id
+    async affSingleManga(){
+      const affManga = await axios.post ('api/mangas/singlemanga',{
+        idmanga : this.id,
+      });
+      this.manga = affManga.data
+    },
+    async addToCart(item){
+      if(this.isLog){
+        item['quantity'] = 1;
+        this.$emit('addItem',item);
+      }
+      else{
+        alert("Please connect to your account to add mangas on your chart");
+      }
+    }
   },
+  mounted (){
+    this.affSingleManga()
+  }
 };
 </script>
 
 <style scoped>
-.single-item {
-  display: flex;
-  flex-direction: column;
-}
 .card {
-  width: 50%;
-  margin: auto;
-  margin-top: 5%;
+  margin:5% 20% 5% 20%;
+}
+.img{
+  width:80%
 }
 .btn {
   margin-left: auto;
 }
-.card-img-left{
-    width:100%;
+@media screen and (max-width: 800px) {
+  
 }
 </style>

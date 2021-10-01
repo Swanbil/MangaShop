@@ -12,8 +12,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="articles" v-for="article in cart" :key="article.id">
-            <th scope="row">{{ article.id }}</th>
+          <tr class="articles" v-for="article in cart" :key="article.idManga">
+            <th scope="row">{{ article.idManga }}</th>
             <td>{{ article.title }}</td>
             <td>{{ article.price }}$</td>
             <td>
@@ -21,7 +21,6 @@
               {{ article.quantity }}
               <b-button class="btn bg-danger" @click="decreaseQuantity(article.id)">-</b-button>
               </td>
-            <!-- button +/- to increment or decrement quantity -->
           </tr>
           <tr class="bg-dark text-light">
             <th scope="row">TOTAL</th>

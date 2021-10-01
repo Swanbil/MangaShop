@@ -3,20 +3,9 @@
     <h1 class="title mt-5">Shop</h1>
     <section class="container mt-5">
       <div class="list-item row">
-        <Item
-          class="item col-4"
-          :item="item"
-          :isLog="isLog"
-          @addItem="onAddToChart"
-        />
-        <Item class="item col-4" 
-          :item="item2"
-          :isLog="isLog"
-          @addItem="onAddToChart"
-        />
-        <Item class="item col-4" :item="item2" />
-        <Item class="item col-4" :item="item" />
-        <Item class="item col-4" :item="item" />
+        <div class="col-3" v-for = "manga in mangas" v-bind:key="manga.idManga">
+          <Item class="item" :item="manga" :isLog="isLog" @addItem="onAddToChart"/>
+        </div>
       </div>
     </section>
   </div>
@@ -36,26 +25,14 @@ export default {
   },
   data() {
     return {
-      item: {
-        id: 0,
-        img: "https://media.melty.fr/article-4489355-ratio15_720-f6/media.jpg",
-        title: "Manga's name",
-        price: 9,
-        description:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      },
-       item2: {
-        id: 1,
-        img: "https://media.melty.fr/article-4489355-ratio15_720-f6/media.jpg",
-        title: "Manga 2",
-        price: 100,
-        description:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      },
+      mangas : [],
     };
   },
   methods: {
-    //load all the item of the bdd and display it with v-for
+     async displayManga(){
+      const affManga = await axios.get('/api/mangas');
+      this.mangas = affManga.data.mangas;
+    },
 
     async onAddToChart(item) {
       try {
@@ -65,6 +42,9 @@ export default {
       }
     },
   },
+   mounted (){
+    this.displayManga()
+  }
 };
 </script>
 
@@ -72,5 +52,6 @@ export default {
 .item {
   padding: 10px;
 }
+
 
 </style>

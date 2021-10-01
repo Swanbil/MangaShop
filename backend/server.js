@@ -112,6 +112,23 @@ app.put('/api/cart/deleteItem', (req,res) => {
     res.json({message:"Item deleted from the cart"});
 })
 
+//Display all manga on product page
+app.get('/api/mangas', async(req, res) => {
+    const aff=await client.query({
+        text: 'SELECT *  FROM mangas',
+    });
+    const mangas = aff.rows;
+    res.json({mangas:mangas});
+})
+app.post('/api/mangas/singlemanga', async (req, res)=>{
+    const idManga= req.body.idmanga
+    const aff = await client.query({
+        text : 'SELECT * FROM mangas where "idManga" = $1',
+        values : [idManga]
+    })
+    const manga = aff.rows[0]
+    res.json(manga)
+})
 const port = process.env.PORT || 3080;
 app.listen(port, () => {
     console.log(`Server is listening on port : ${port}`);
