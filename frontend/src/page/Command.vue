@@ -7,7 +7,11 @@
         v-model="address.street"
         class="p-2 m-3"
       ></b-form-input>
-      <b-form-input placeholder="City" v-model="address.city" class="p-2 m-3"></b-form-input>
+      <b-form-input
+        placeholder="City"
+        v-model="address.city"
+        class="p-2 m-3"
+      ></b-form-input>
       <b-form-input
         placeholder="Postale Code"
         v-model="address.postalCode"
@@ -20,17 +24,17 @@
       ></b-form-input>
     </div>
 
-    <b-button @click="command()"  class="btn m-2">Command</b-button>
+    <b-button @click="command()" class="btn m-2">Command</b-button>
     <b-modal id="modal-1" title="Notification" @ok="finishCommand()" centered>
       <p class="my-4">
-        {{text}}
+        {{ text }}
       </p>
     </b-modal>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "Command",
   data() {
@@ -41,34 +45,47 @@ export default {
         postalCode: "",
         country: "",
       },
-      text:''
+      text: "",
     };
   },
   methods: {
     command() {
-        if(this.address.street && this.address.city && this.address.postalCode && this.address.country){
-            this.text = "Your command has been registred! You will receive your order at your address ("+this.address.street+" "+ this.address.city+" "+ this.address.postalCode+" "+ this.address.country+") in five days ✔️";
-        }
-        else{
-            this.text = "Please your address must be complete";
-        }
-        this.$bvModal.show('modal-1');
-            
+      if (
+        this.address.street &&
+        this.address.city &&
+        this.address.postalCode &&
+        this.address.country
+      ) {
+        this.text =
+          "Your command has been registred! You will receive your order at your address (" +
+          this.address.street +
+          " " +
+          this.address.city +
+          " " +
+          this.address.postalCode +
+          " " +
+          this.address.country +
+          ") in five days ✔️";
+      } else {
+        this.text = "Please your address must be complete";
+      }
+      this.$bvModal.show("modal-1");
     },
-    async finishCommand(){
-        await axios.delete('/api/cart/clearCart');
-        this.$router.push({name:'Home'})
-    }
+    async finishCommand() {
+      if (this.text != "Please your address must be complete") {
+        await axios.delete("/api/cart/clearCart");
+        this.$router.push({ name: "Home" });
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
-.form-address{
-    margin:0 20% 0 20%;  
+.form-address {
+  margin: 0 20% 0 20%;
 }
-.btn{
-    background-color:#277ac7;
-    
+.btn {
+  background-color: #277ac7;
 }
 </style>

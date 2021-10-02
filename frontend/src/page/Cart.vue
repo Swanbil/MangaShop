@@ -32,7 +32,7 @@
       </table>
     </section>
 
-    <b-button class="btn" variant="success" @click="$router.push({name:'Command'})">Pay</b-button>
+    <b-button class="btn" variant="success" @click="$router.push({name:'Command'})" v-if="cart.length !=0">Pay</b-button>
   </div>
 </template>
 
