@@ -6,13 +6,13 @@
       :isAdmin="isAdmin"
       @changeAdmin="onChangeAdmin"
       :cart="cart"
-      :count="count"
+      :hasItem="hasItem"
     />
     <router-view
       :isLog="isLog"
       :isAdmin="isAdmin"
       :cart="cart"
-      :count="count"
+      :hasItem="hasItem"
       @clicked="onChangeLog"
       @changeAdmin="onChangeAdmin"
       @changeCart="onChangeCart"
@@ -40,7 +40,7 @@ export default {
       isLog: false,
       isAdmin: false,
       cart: [],
-      count: 0,
+      hasItem: false,
     };
   },
   methods: {
@@ -54,8 +54,7 @@ export default {
       this.cart = value;
     },
     onChangeCount(value) {
-      this.count += value;
-      //this.getCount();
+      this.hasItem = value;
     },
     async getCount() {
       const response = await axios.get("/api/count");

@@ -38,13 +38,16 @@ export default {
     async onAddToChart(item) {
       try {
         await axios.post("/api/cart/addItem", { item: item, count:this.count+1});
-        this.$emit('changeCount',1)
+        this.$emit('changeCount',true)
       } catch (e) {
         console.warn(e);
       }
     },
   },
-   mounted (){
+   async mounted (){
+    const response = await axios.get('/api/count');
+    var hasItem = response.data.hasItem;
+    this.$emit('changeCount',hasItem);
     this.displayManga()
   }
 };

@@ -29,7 +29,7 @@
           <div v-else class="item-btn ms-auto">
             <router-link class="link" to="/cart">
               <div class="d-flex cart text-success flex-direction-row">
-                <div class="notif d-flex align-items-baseline text-light"><span v-if="count>0" class="dot">{{this.count}}</span></div>
+                <div class="notif d-flex align-items-baseline text-light"><span v-if="hasItem" class="dot"></span></div>
                 <div class="d-flex flex-direction-row align-items-baseline">
                   <b-icon icon="cart4" aria-hidden="true"></b-icon>
                   <div>Cart</div>
@@ -55,7 +55,7 @@ export default {
     isLog: Boolean,
     isAdmin: Boolean,
     cart: Array,
-    count : Number
+    hasItem : Boolean
   },
   data(){
     return{
@@ -90,9 +90,9 @@ export default {
 
 .dot{
   font-size:10px;
-  height: 15px;
-  width: 15px;
-  background-color: #277ac7;
+  height: 10px;
+  width: 10px;
+  background-color: #c72727;
   border-radius: 50%;
   display: inline-block;
 }

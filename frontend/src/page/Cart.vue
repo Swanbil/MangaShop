@@ -62,6 +62,9 @@ export default {
     async getCart(){
       const response = await axios.get('/api/cart');
       const cart = response.data.cart;
+      if(cart.length == 0){
+        this.$emit('changeCount', false);
+      }
       this.$emit('changeCart', cart);
     },
     async increaseQuantity(idArticle){
@@ -69,7 +72,6 @@ export default {
       const item = this.cart[id];
       try {
         await axios.post("/api/cart/addItem", { item: item });
-        this.$emit('changeCount',0);
       } catch (e) {
         console.warn(e);
       }
