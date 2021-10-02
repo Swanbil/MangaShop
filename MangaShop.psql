@@ -1,0 +1,189 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.4
+-- Dumped by pg_dump version 13.4
+
+-- Started on 2021-10-02 17:45:48
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 201 (class 1259 OID 17406)
+-- Name: mangas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mangas (
+    "idManga" integer NOT NULL,
+    title text,
+    description text,
+    image text,
+    "numVol" integer,
+    price integer,
+    categorie text
+);
+
+
+ALTER TABLE public.mangas OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 17404)
+-- Name: mangas_idManga_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."mangas_idManga_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."mangas_idManga_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3003 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: mangas_idManga_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."mangas_idManga_seq" OWNED BY public.mangas."idManga";
+
+
+--
+-- TOC entry 203 (class 1259 OID 17422)
+-- Name: utilisateur; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.utilisateur (
+    id integer NOT NULL,
+    username text,
+    password text,
+    isadmin boolean
+);
+
+
+ALTER TABLE public.utilisateur OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 17420)
+-- Name: utilisateur_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.utilisateur_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.utilisateur_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3004 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: utilisateur_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.utilisateur_id_seq OWNED BY public.utilisateur.id;
+
+
+--
+-- TOC entry 2858 (class 2604 OID 17409)
+-- Name: mangas idManga; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mangas ALTER COLUMN "idManga" SET DEFAULT nextval('public."mangas_idManga_seq"'::regclass);
+
+
+--
+-- TOC entry 2859 (class 2604 OID 17425)
+-- Name: utilisateur id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateur ALTER COLUMN id SET DEFAULT nextval('public.utilisateur_id_seq'::regclass);
+
+
+--
+-- TOC entry 2995 (class 0 OID 17406)
+-- Dependencies: 201
+-- Data for Name: mangas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.mangas ("idManga", title, description, image, "numVol", price, categorie) FROM stdin;
+1	Blue Lock Vol. 1	Coupe du monde 2018, l équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l Union japonaise de football à fonder le Blue Lock : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.L objectif du coach du Blue Lock, Jinpachi Ego, est clair : détecter l unique attaquant qui écrasera tous ses rivaux par son talent et son hyper-individualisme ! Pour Yoichi Isagi, joueur bouillonnant encore inconnu, il n y a pas d alternative... S il veut survivre au programme hautement sélectif qui l attend, il devra abandonner le jeu collectif et se transcender pour devenir l attaquant ultime !	https://www.pika.fr/sites/default/files/images/livres/couv/9782811662233-001-T.jpeg	1	7	sport
+2	Blue Lock Vol. 2	La première sélection du 5e bâtiment va bientôt commencer. Elle consiste en un Round-robin entre les 5 équipes. Le premier match d Isagi et de l équipe Z est sur le point de débuter. Laquelle des deux équipes sortira victorieuse ?	https://media.senscritique.com/media/000019791700/source_big/Blue_Lock_tome_2.jpg	2	7	sport
+3	Tokyo Ghoul Vol. 1	À Tokyo, sévissent des goules, monstres cannibales se dissimulant parmi les humains pour mieux s en nourrir. Étudiant timide, Ken Kaneki est plus intéressé par la jolie fille qui partage ses goûts pour la lecture que par ces affaires sordides, jusqu au jour où il se fait attaquer par l une de ces fameuses créatures. Mortellement blessé, il survit grâce à la greffe des organes de son agresseur… Remis de son opération, il réalise peu à peu qu il est devenu incapable de se nourrir comme avant et commence à ressentir un appétit suspect envers ses congénères. C est le début d une descente aux enfers pour Kaneki, devenu malgré lui un hybride mi-humain, mi-goule.	https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781421580364/tokyo-ghoul-vol-1-9781421580364_hr.jpg	1	9	action
+\.
+
+
+--
+-- TOC entry 2997 (class 0 OID 17422)
+-- Dependencies: 203
+-- Data for Name: utilisateur; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.utilisateur (id, username, password, isadmin) FROM stdin;
+1	swan	$2b$10$sFDAlxXT7oLcr2ajsiZRH.oj.txpbJ8pSE/mf4x9f/PoKOhPoOGje	f
+\.
+
+
+--
+-- TOC entry 3005 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: mangas_idManga_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."mangas_idManga_seq"', 3, true);
+
+
+--
+-- TOC entry 3006 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: utilisateur_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.utilisateur_id_seq', 1, true);
+
+
+--
+-- TOC entry 2861 (class 2606 OID 17414)
+-- Name: mangas mangas_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mangas
+    ADD CONSTRAINT mangas_pk PRIMARY KEY ("idManga");
+
+
+--
+-- TOC entry 2863 (class 2606 OID 17430)
+-- Name: utilisateur utilisateur_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.utilisateur
+    ADD CONSTRAINT utilisateur_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2021-10-02 17:45:48
+
+--
+-- PostgreSQL database dump complete
+--
+
