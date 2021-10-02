@@ -31,6 +31,8 @@
         </tbody>
       </table>
     </section>
+
+    <b-button class="btn" variant="success" @click="$router.push({name:'Command'})">Pay</b-button>
   </div>
 </template>
 
@@ -59,7 +61,7 @@ export default {
     },
     async getCart(){
       const response = await axios.get('/api/cart');
-      const cart = response.data;
+      const cart = response.data.cart;
       this.$emit('changeCart', cart);
     },
     async increaseQuantity(idArticle){
@@ -67,6 +69,7 @@ export default {
       const item = this.cart[id];
       try {
         await axios.post("/api/cart/addItem", { item: item });
+        this.$emit('changeCount',0);
       } catch (e) {
         console.warn(e);
       }
@@ -83,7 +86,7 @@ export default {
       }
       await this.getCart();
       this.setTotalCart();
-    }
+    },
   },
   async mounted() {
     await this.getCart();
@@ -102,6 +105,7 @@ export default {
   color: #277ac7;
 }
 .btn{
-  padding:0 7px 0 7px;
+  margin-top:5%;
+  padding:5px 5% 5px 5%;
 }
 </style>

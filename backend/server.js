@@ -19,10 +19,11 @@ const client = new Client({
   })
 client.connect();
 
-var cart = [];        //cart backend side
+var cart = [];      //cart backend side
+var count = 0;      //numberArticle in the cart
 
-app.get('/api/test', (req, res) => {
-    res.json({message: 'MangaShop'});
+app.get('/api/count', (req, res) => {
+    res.json({count: count});
 });
 
 app.post('/api/login', async(req,res) => {
@@ -84,11 +85,13 @@ app.post('/api/register', async(req,res) => {
 })
 
 app.get('/api/cart', (req,res) =>{
-    res.json(cart);
+    res.json({cart:cart});
 })
 
 app.post('/api/cart/addItem', (req,res) => {
     const item = req.body.item;
+    const newCount = req.body.count;
+    count = newCount;
     const id = cart.findIndex(i => i.idManga === item.idManga);
       if(id == -1){
         cart.push(item);
@@ -110,6 +113,12 @@ app.put('/api/cart/deleteItem', (req,res) => {
         cart[id].quantity -=1;
     }
     res.json({message:"Item deleted from the cart"});
+})
+
+app.delete('/api/cart/clearCart', (req,res) => {
+    cart = [];
+    count = 0;
+    res.json({message:"Cart is cleared"});
 })
 
 //Display all manga on product page

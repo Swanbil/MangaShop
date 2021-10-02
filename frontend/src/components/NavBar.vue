@@ -28,9 +28,12 @@
           </div>
           <div v-else class="item-btn ms-auto">
             <router-link class="link" to="/cart">
-              <div class="cart text-success d-flex flex-direction_row">
-                <b-icon icon="cart4" aria-hidden="true"></b-icon>
-                <div>Cart</div>
+              <div class="d-flex cart text-success flex-direction-row">
+                <div class="notif d-flex align-items-baseline text-light"><span v-if="count>0" class="dot">{{this.count}}</span></div>
+                <div class="d-flex flex-direction-row align-items-baseline">
+                  <b-icon icon="cart4" aria-hidden="true"></b-icon>
+                  <div>Cart</div>
+                </div>
               </div>
             </router-link>
             <b-button class="btn-log text-light d-flex flex-direction-row p-1" @click="logout()">
@@ -41,6 +44,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    
   </div>
 </template>
 
@@ -50,6 +54,13 @@ export default {
   props: {
     isLog: Boolean,
     isAdmin: Boolean,
+    cart: Array,
+    count : Number
+  },
+  data(){
+    return{
+      
+    }
   },
   methods: {
     async logout() {
@@ -59,6 +70,7 @@ export default {
       this.$router.push({ name: "Home" });
     },
   },
+  
 };
 </script>
 
@@ -73,7 +85,16 @@ export default {
   padding: 10px;
 }
 .cart {
-  padding-right: 30px;
+  padding-right: 30px; 
+}
+
+.dot{
+  font-size:10px;
+  height: 15px;
+  width: 15px;
+  background-color: #277ac7;
+  border-radius: 50%;
+  display: inline-block;
 }
 .item-btn {
   list-style: none;

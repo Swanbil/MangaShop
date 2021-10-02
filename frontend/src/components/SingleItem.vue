@@ -56,7 +56,8 @@ export default {
       if (this.isLog) {
         try {
           manga['quantity'] = 1;
-          await axios.post("/api/cart/addItem", { item: manga });
+          await axios.post("/api/cart/addItem", { item: manga, count:this.count+1});
+          this.$emit('changeCount',1)
         } catch (e) {
           console.warn(e);
         }

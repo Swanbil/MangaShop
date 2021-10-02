@@ -1,36 +1,47 @@
 <template>
   <div id="app">
-    <NavBar :isLog="isLog" @clicked="onChangeLog" :isAdmin="isAdmin" @changeAdmin="onChangeAdmin"/>
-    <router-view 
+    <NavBar
+      :isLog="isLog"
+      @clicked="onChangeLog"
+      :isAdmin="isAdmin"
+      @changeAdmin="onChangeAdmin"
+      :cart="cart"
+      :count="count"
+    />
+    <router-view
       :isLog="isLog"
       :isAdmin="isAdmin"
       :cart="cart"
+      :count="count"
       @clicked="onChangeLog"
       @changeAdmin="onChangeAdmin"
       @changeCart="onChangeCart"
-      class="content ">
+      @changeCount="onChangeCount"
+      class="content"
+    >
     </router-view>
-    <Footer id="footer"/>
-    
+    <Footer id="footer" />
   </div>
 </template>
  
 <script>
+import axios from "axios";
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 export default {
   name: "App",
   components: {
     NavBar,
-    Footer
+    Footer,
   },
   data() {
     return {
-      isLog:false,
-      isAdmin:false,
-      cart:[]
-    }
+      isLog: false,
+      isAdmin: false,
+      cart: [],
+      count: 0,
+    };
   },
   methods: {
     onChangeLog(value) {
@@ -39,23 +50,33 @@ export default {
     onChangeAdmin(value) {
       this.isAdmin = value;
     },
-    onChangeCart(value){
+    onChangeCart(value) {
       this.cart = value;
-    }
+    },
+    onChangeCount(value) {
+      this.count += value;
+      //this.getCount();
+    },
+    async getCount() {
+      const response = await axios.get("/api/count");
+      const count = response.data.count;
+      this.count = count;
+    },
   },
-  async created(){
-    const token = localStorage.getItem('token');
+  async created() {
+    const token = localStorage.getItem("token");
     const decodeToken = jwt.decode(token);
-    if(decodeToken.log == true){
+    if (decodeToken.log == true) {
       this.isLog = true;
       this.isAdmin = decodeToken.admin;
-    }
-    else{
+    } else {
       this.isLog = false;
       this.isAdmin = false;
     }
   },
-  
+  async mounted() {
+    await this.getCount();
+  },
 };
 </script>
 
@@ -68,16 +89,13 @@ export default {
   color: #2c3e50;
   position: relative;
   min-height: 100vh;
-
-  
 }
 #footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
-.content{
-  padding-bottom:120px;
+.content {
+  padding-bottom: 120px;
 }
-
 </style>

@@ -19,6 +19,7 @@ export default {
   props: {
     isLog: Boolean,
     cart: Array,
+    count : Number
   },
   components: {
     Item,
@@ -36,7 +37,8 @@ export default {
 
     async onAddToChart(item) {
       try {
-        await axios.post("/api/cart/addItem", { item: item });
+        await axios.post("/api/cart/addItem", { item: item, count:this.count+1});
+        this.$emit('changeCount',1)
       } catch (e) {
         console.warn(e);
       }

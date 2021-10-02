@@ -6,6 +6,7 @@ import Register from '../page/Register.vue';
 import Home from '../page/Home.vue';
 import Product from '../page/Product.vue';
 import Cart from '../page/Cart.vue';
+import Command from '../page/Command.vue';
 import SingleItem from '../components/SingleItem.vue';
 
 Vue.use(Router)
@@ -41,6 +42,11 @@ export default new Router({
         path: '/item/:id',
         name: 'SingleItem',
         component: SingleItem
+      },
+      {
+        path: '/command',
+        name: 'Command',
+        component: Command
       },
        
     ]
