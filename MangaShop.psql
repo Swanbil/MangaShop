@@ -5,7 +5,7 @@
 -- Dumped from database version 13.4
 -- Dumped by pg_dump version 13.4
 
--- Started on 2021-10-02 17:45:48
+-- Started on 2021-10-23 09:54:19
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -128,9 +128,18 @@ ALTER TABLE ONLY public.utilisateur ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 COPY public.mangas ("idManga", title, description, image, "numVol", price, categorie) FROM stdin;
+7	Kaguya-sama - Love is War	Pour Kaguya Shinomiya, vice-présidente du conseil des élève, l'amour c'est comme la guerre, il y a un gagnant et un perdant, un dominé et un dominant, si la personne vise trop haut, elle est perdante. Miyuki Shirogane, le président du conseil des élèves, pense de la même façon. L'objectif des deux et de forcer l'autre à avouer ses sentiments.	https://www.nautiljon.com/images/manga_volumes/00/06/mini/29960.jpg?11618130670	1	7	comedie
 1	Blue Lock Vol. 1	Coupe du monde 2018, l équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l Union japonaise de football à fonder le Blue Lock : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.L objectif du coach du Blue Lock, Jinpachi Ego, est clair : détecter l unique attaquant qui écrasera tous ses rivaux par son talent et son hyper-individualisme ! Pour Yoichi Isagi, joueur bouillonnant encore inconnu, il n y a pas d alternative... S il veut survivre au programme hautement sélectif qui l attend, il devra abandonner le jeu collectif et se transcender pour devenir l attaquant ultime !	https://www.pika.fr/sites/default/files/images/livres/couv/9782811662233-001-T.jpeg	1	7	sport
 2	Blue Lock Vol. 2	La première sélection du 5e bâtiment va bientôt commencer. Elle consiste en un Round-robin entre les 5 équipes. Le premier match d Isagi et de l équipe Z est sur le point de débuter. Laquelle des deux équipes sortira victorieuse ?	https://media.senscritique.com/media/000019791700/source_big/Blue_Lock_tome_2.jpg	2	7	sport
 3	Tokyo Ghoul Vol. 1	À Tokyo, sévissent des goules, monstres cannibales se dissimulant parmi les humains pour mieux s en nourrir. Étudiant timide, Ken Kaneki est plus intéressé par la jolie fille qui partage ses goûts pour la lecture que par ces affaires sordides, jusqu au jour où il se fait attaquer par l une de ces fameuses créatures. Mortellement blessé, il survit grâce à la greffe des organes de son agresseur… Remis de son opération, il réalise peu à peu qu il est devenu incapable de se nourrir comme avant et commence à ressentir un appétit suspect envers ses congénères. C est le début d une descente aux enfers pour Kaneki, devenu malgré lui un hybride mi-humain, mi-goule.	https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781421580364/tokyo-ghoul-vol-1-9781421580364_hr.jpg	1	9	action
+4	Tokyo Ghoul Vol. 2	Ken Kaneki voit sa vie lentement basculer après avoir reçu des organes de Goule lors d une transplantation. Ken tente d apaiser ce conflit intérieur en travaillant à L Antique, un café tenu par des Goules. Cependant, il est bientôt confronté aux inspecteurs de la brigade des Goules, surnommés colombes. Ces ennemis mortels usent des moyens les plus retors afin de pourchasser sans répit ceux qu ils ont pour mission d éliminer !	https://images-ext-1.discordapp.net/external/YVmc62jRJWuqfwJwJjgRpkXc_fsUtMLS6OBhj7tqfJw/%3F11458375088/https/www.nautiljon.com/images/manga_volumes/00/98/mini/6389.jpg	2	6	action
+5	Mushoku Tensei	L'histoire nous entraine dans le quotidien d'un NEET qui vient d'être chassé de chez ses parents. Ayant le moral au plus bas, il pense au suicide. Jusqu'au jour où il aperçoit une ancienne camarade de classe sur le point de se faire renverser, et d'un geste héroïque, il l'a pousse et se fait renverser à sa place. Suite à ça, il meurt sur le coup puis se retrouve réincarner dans un monde fantastique.\n\nIl se réincarne dans le corps d'un enfant du nom de Rudeus Greyrat. Il est le fils d'un épéiste nommé Paul Greyrat et d'une ancienne aventurière nommée Zenith Greyrat.\n\nBien décidé à faire quelque chose de sa nouvelle vie en tant que Rudeus, il va essayer de devenir le plus grand magicien de l'histoire.	https://www.nautiljon.com/images/manga/00/92/mini/mushoku_tensei_5229.jpg?11625216781	1	8	action
+6	Mushoku Tensei	Nouvelle épreuve pour Rudeus : on le destine à devenir le tuteur d'une jeune fille de bonne famille particulièrement colérique ! Désemparé face aux crises de violence de sa future élève, il met au point un plan qui doit l'aider à dompter la tigresse, mais tout ne se déroule pas exactement comme prévu…	https://images-ext-1.discordapp.net/external/9QD0SgV5m3GOZhkY1AVc3jb5tb8dnfeaPuQo1t87BJU/%3F11524145615/https/www.nautiljon.com/images/manga_volumes/00/92/mini/26629.jpg	2	8	action
+8	Kaguya-sama - Love is War Vol. 2	Il y a toujours des rumeurs sur le fait que Kaguya et Shirogane sont en couple. L'un comme l'autre attend toujours une déclaration pour ne pas être le perdant. Au sein du conseil des élèves la secrétaire Chika Fujiwara ne se doute de rien et incarne la théorie du chaos. Alors que Shirogane vient d'acquérir un téléphone portable son nouveau plan est que Kaguya lui demande son numéro.	https://images-ext-2.discordapp.net/external/z5bNCLIHPWpvAmnxI92DkYm8EMW4WmG2j55Xsd_Htiw/%3F11618130678/https/www.nautiljon.com/images/manga_volumes/00/16/mini/29961.jpg	2	7	comedie
+9	Kaguya-sama - Love is War Vol. 3	Miyuki Shirogane, le président du bureau des élèves, et Kaguya Shinomiya, la vice-présidente, sont engagés dans une guerre où tous les coups sont permis pour séduire l'autre et l'obliger à déclarer sa flamme ! Partage de coin de parapluie, mangas pour filles, entraînement rigoureux de volley, manucure, grossièretés enfantines, activités de clubs, examens trimestriels... Tout est prétexte à porter le coup fatal à l'adversaire ! Dissimulé dans l'ombre et se prenant parfois les balles perdues de ces combats sans merci, Yû Ishigami, trésorier du BDE, tente tant bien que mal de survivre...	https://images-ext-1.discordapp.net/external/AA3qpsZi8-YcCjX5kBCuX7d9HYk3uusXGydXya8Voi8/%3F11624376757/https/www.nautiljon.com/images/manga_volumes/00/56/mini/29965.jpg	3	7	comedie
+10	Kingdom Vol. 1	Au sein du Royaume de Qin vivent deux orphelins, Hyo et Shin. Au beau milieu des champs de bataille, les deux frères espèrent un jour qu'eux aussi, ils pourront servir leur royaume en combattant aux côtés des soldats qu'ils admirent. Alors qu'un jour, ils sont séparés l'un de l'autre, Shin décide de poursuivre son chemin pour devenir un grand général.	https://images-ext-2.discordapp.net/external/M_xlSa2SyGRzIU1ElD1L2Z3Sgd9QGI-0ErM8RMe0W6I/%3F11616144895/https/www.nautiljon.com/images/manga_volumes/00/59/mini/20695.jpg	1	10	aventure
+11	Kingdom Vol.2	Shin, Sei et Ten sont arrivés au point de rendez-vous donné par Shou Bun Kun.\nSei leur parle alors du peuple des montagnes.	https://images-ext-1.discordapp.net/external/2CEaaxij8htpb0ncvdekYUqhim0EXUYivigo2mgWEJM/%3F11616144924/https/www.nautiljon.com/images/manga_volumes/00/19/mini/25191.jpg	2	10	aventure
+12	Naruto Vol. 1	Naruto est un garçon un peu spécial. Il est toujours tout seul et son caractère fougueux ne l'aide pas vraiment à se faire apprécier dans son village. Malgré cela, il garde au fond de lui une ambition: celle de devenir un maître Hokage, la plus haute distinction dans l'ordre des ninjas, et ainsi obtenir la reconnaissance de ses pairs.	https://images-ext-1.discordapp.net/external/nlPHIsw5X_oGgtjI8leRx_bEVBCE66TfST-lG_gwcbI/%3F11585684395/https/www.nautiljon.com/images/manga_volumes/00/59/mini/595.jpg	1	6	aventure
 \.
 
 
@@ -142,6 +151,8 @@ COPY public.mangas ("idManga", title, description, image, "numVol", price, categ
 
 COPY public.utilisateur (id, username, password, isadmin) FROM stdin;
 1	swan	$2b$10$sFDAlxXT7oLcr2ajsiZRH.oj.txpbJ8pSE/mf4x9f/PoKOhPoOGje	f
+2	sacha	$2b$10$TLLO3Yyci3H5m1ZaLFyhPO6hwRAK7i09IDDvBrlrcP8TLKmTrjBPa	f
+3	toto	$2b$10$TPArRMygSqIr.dFhKZVA9.dXSqafGn61xsdk0GRNyYiDNa4I0N27m	f
 \.
 
 
@@ -151,7 +162,7 @@ COPY public.utilisateur (id, username, password, isadmin) FROM stdin;
 -- Name: mangas_idManga_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."mangas_idManga_seq"', 3, true);
+SELECT pg_catalog.setval('public."mangas_idManga_seq"', 5, true);
 
 
 --
@@ -160,7 +171,7 @@ SELECT pg_catalog.setval('public."mangas_idManga_seq"', 3, true);
 -- Name: utilisateur_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.utilisateur_id_seq', 1, true);
+SELECT pg_catalog.setval('public.utilisateur_id_seq', 3, true);
 
 
 --
@@ -181,7 +192,7 @@ ALTER TABLE ONLY public.utilisateur
     ADD CONSTRAINT utilisateur_pkey PRIMARY KEY (id);
 
 
--- Completed on 2021-10-02 17:45:48
+-- Completed on 2021-10-23 09:54:20
 
 --
 -- PostgreSQL database dump complete
